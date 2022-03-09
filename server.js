@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 require("dotenv").config('.env');
 
 const app = express();
-const port = process.env.PORT || 5500;
+const port = process.env.PORT || 5555;
 
 app.use(cors());
 app.use(express.json());
@@ -18,13 +18,8 @@ connection.once('open', () => {
 })
 
 const tasksRouter = require('./routes/tasks')
-app.use('/tasks', tasksRouter);
+app.use('/api', tasksRouter);
 
 app.listen(port, () => {
-    // perform a database connection when server starts
-    // dbo.connectToServer(function (err) {
-    //     if (err) console.error(err);
-    //
-    // });
     console.log(`Server is running on port: ${port}`);
 });
